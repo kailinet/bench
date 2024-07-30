@@ -163,7 +163,8 @@ ipv4_info() {
     local city="$(wget -q -T10 -O- ipinfo.io/city)"
     local country="$(wget -q -T10 -O- ipinfo.io/country)"
     local region="$(wget -q -T10 -O- ipinfo.io/region)"
-	if [[ -n "$org" ]]; then
+	local yourip="$(curl -4 -s --max-time 5 http://icanhazip.com/)"
+    if [[ -n "$org" ]]; then
         echo " Organization       : $(_blue "$org")"
     fi
     if [[ -n "$city" && -n "country" ]]; then
@@ -175,6 +176,9 @@ ipv4_info() {
     if [[ -z "$org" ]]; then
         echo " Region             : $(_red "No ISP detected")"
     fi
+	if [[ -n "$yourip" ]]; then
+		echo " Your IPv4          : $(_green "$yourip")"
+	fi
 }
 
 install_speedtest() {
