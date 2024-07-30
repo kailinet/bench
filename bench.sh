@@ -219,7 +219,7 @@ install_speedtest() {
 
 print_intro() {
     echo "-------------------- Indonesia Server Benchmark by Kaili -------------------"
-    echo " Version            : $(_green v1)"
+    echo " Version            : $(_green v1.1)"
     echo " Usage              : $(_red "wget -qO- kaili.id/bench.sh | bash")"
 }
 
